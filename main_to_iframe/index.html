@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Token Sender</title>
+</head>
+
+<body>
+    <button id="tokenButton">Send Token</button>
+    <br><br>
+    <iframe id="tokenIframe" src="./iframe.html" width="400" height="300"></iframe>
+
+    <script>
+        // Wait for the DOM to load
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get references to the button and iframe
+            var tokenButton = document.getElementById("tokenButton");
+            var tokenIframe = document.getElementById("tokenIframe");
+
+            // Add a click event listener to the button
+            tokenButton.addEventListener("click", function () {
+                // Generate a random token
+                var token = Math.random().toString(36).substring(7);
+
+                // Pass the token to the iframe
+                tokenIframe.contentWindow.postMessage(token, "*");
+            });
+        });
+    </script>
+</body>
+
+</html>

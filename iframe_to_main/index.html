@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Site</title>
+</head>
+<body>
+  <h1>Welcome to the Main Site!</h1>
+  <p>This is the content of the main site.</p>
+  <p>The token received is: <span id="token"></span></p>
+  <iframe id="tokenIframe" src="./child.html" width="400" height="300"></iframe>
+
+  <script>
+    // Listen for messages from the iframe
+    window.addEventListener("message", function(event) {
+      // Verify that the message came from the trusted iframe site (optional)
+      // if (event.origin !== "http://example.com") return;
+
+      // Get the token from the message
+      var token = event.data;
+
+      // Display the token in the HTML
+      var tokenElement = document.getElementById("token");
+      tokenElement.textContent = token;
+    });
+  </script>
+</body>
+</html>

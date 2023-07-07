@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iframe Site</title>
+</head>
+<body>
+  <h1>Welcome to the Iframe Site!</h1>
+  <p>This is the content of the iframe site.</p>
+  <button id="tokenButton">Send Token to Main Site</button>
+
+  <script>
+    // Wait for the DOM to load
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get a reference to the button
+      var tokenButton = document.getElementById("tokenButton");
+
+      // Add a click event listener to the button
+      tokenButton.addEventListener("click", function() {
+        // Generate a random token
+        var token = Math.random().toString(36).substring(7);
+
+        // Send the token to the parent window
+        window.parent.postMessage(token, "*");
+      });
+    });
+  </script>
+</body>
+</html>
